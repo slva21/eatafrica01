@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Main from "../components/kitchenLogin/main.jsx";
 import Api from "../server/Login";
 
 class KitchenLogin extends Component {
@@ -30,48 +31,7 @@ class KitchenLogin extends Component {
     } catch (ex) {}
   };
   render() {
-    return (
-      <main>
-        <div className="card" style={{ width: "21.5rem" }}>
-          <img
-            src="https://t3.ftcdn.net/jpg/02/73/53/32/240_F_273533205_nL07ay0novw8AizElXHVtRF7j3YkdjSH.jpg"
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body d-flex justify-content-center">
-            <p className="card-text text-xl-center">
-              YOU REPRESENT YOUR COUNTRY!
-            </p>
-          </div>
-        </div>
-        <form className="mt-2" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
-            <input
-              onChange={this.handleChange}
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              name="email"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              onChange={this.handleChange}
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              name="password"
-            />
-          </div>
-          <button type="submit" className="btn btn-success">
-            LOGIN
-          </button>
-        </form>
-      </main>
-    );
+    return <Main onChange={this.handleChange} onSubmit={this.handleSubmit} />;
   }
 }
 
