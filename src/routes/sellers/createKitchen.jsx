@@ -13,8 +13,14 @@ class CreateKitchen extends Component {
     info: {
       storeName: "", //1
       origin: "", //2
+      addressline1: "", //2
+      addressline2: "", //2
+      postcode: "", //2
+      city: "", //2
       email: "", //3
       password: "", //3
+      confirmPassword: "", //3
+      mobile: "", //3
       name: "", //4
     },
     currentStep: 1,
@@ -38,12 +44,21 @@ class CreateKitchen extends Component {
     info.origin = e.currentTarget.value;
     this.setState({ info });
   };
+
+  handleFormChange = (e) => {
+    let info = { ...this.state.info };
+    info[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ info });
+  };
+
   render() {
     return (
       <main className="mb-4">
         <Main
+          onFormChange={this.handleFormChange}
           currentStep={this.state.currentStep}
           origins={this.state.origins}
+          info={this.state.info}
           onOriginChange={this.handleOriginChange}
         />
         <div

@@ -1,14 +1,14 @@
 import React from "react";
 import { Fragment } from "react";
 
-const Step1 = () => {
+const Step1 = ({ onFormChange, info }) => {
   return (
     <Fragment>
       <div className="progress mt-3">
         <div
           className="progress-bar progress-bar-striped progress-bar-animated"
           role="progressbar"
-          style={{ width: "0%", backgroundColor: "gold" }}
+          style={{ width: "2%", backgroundColor: "gold" }}
           aria-valuenow="25"
           aria-valuemin="0"
           aria-valuemax="100"
@@ -25,7 +25,9 @@ const Step1 = () => {
           <input
             className="form-control form-control-lg mt-n1"
             type="text"
-            // S
+            name="storeName"
+            value={info.storeName}
+            onChange={onFormChange}
             aria-label=".form-control-lg example"
             style={{ borderColor: "gold" }}
           />

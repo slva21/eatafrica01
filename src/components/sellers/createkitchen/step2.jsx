@@ -36,8 +36,9 @@ const Step2 = (props) => {
           <input
             className="form-control  mt-n1"
             type="text"
-            // S
-            aria-label=". example"
+            name="addressline1"
+            onChange={props.onFormChange}
+            value={props.info.addressline1}
             style={{ borderColor: "gold" }}
           />
           <small className="text-muted">
@@ -49,7 +50,9 @@ const Step2 = (props) => {
           <input
             className="form-control  mt-n1"
             type="text"
-            aria-label=". example"
+            name="addressline2"
+            onChange={props.onFormChange}
+            value={props.info.addressline2}
             style={{ borderColor: "gold" }}
           />
           <small className="text-muted">
@@ -63,7 +66,10 @@ const Step2 = (props) => {
               type="text"
               class="form-control"
               placeholder="Postcode"
+              value={props.info.postcode}
               aria-label="Username"
+              name="postcode"
+              onChange={props.onFormChange}
               style={{ borderColor: "gold" }}
             />
 
@@ -71,7 +77,9 @@ const Step2 = (props) => {
               type="text"
               class="form-control"
               placeholder="City/Town"
-              aria-label="Server"
+              name="city"
+              value={props.info.city}
+              onChange={props.onFormChange}
               style={{ borderColor: "gold" }}
             />
           </div>

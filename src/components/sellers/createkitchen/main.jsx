@@ -13,11 +13,20 @@ const Main = (props) => {
   return (
     <animated.div style={propss}>
       {/* kitchen name */}
-      {props.currentStep == 1 && <Step1 />}
-      {props.currentStep == 2 && (
-        <Step2 onOriginChange={props.onOriginChange} origins={props.origins} />
+      {props.currentStep == 1 && (
+        <Step1 onFormChange={props.onFormChange} info={props.info} />
       )}
-      {props.currentStep == 3 && <Step3 />}
+      {props.currentStep == 2 && (
+        <Step2
+          onOriginChange={props.onOriginChange}
+          origins={props.origins}
+          onFormChange={props.onFormChange}
+          info={props.info}
+        />
+      )}
+      {props.currentStep == 3 && (
+        <Step3 onFormChange={props.onFormChange} info={props.info} />
+      )}
     </animated.div>
   );
 };

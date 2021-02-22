@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 
-const Step3 = () => {
+const Step3 = ({ onFormChange, info }) => {
   return (
     <Fragment>
       <div className="progress mt-3">
@@ -25,8 +25,9 @@ const Step3 = () => {
           <input
             className="form-control form-control-lg mt-n1"
             type="text"
-            // S
-            aria-label=".form-control-lg example"
+            name="email"
+            onChange={onFormChange}
+            value={info.email}
             style={{ borderColor: "gold" }}
           />
           <small className="text-muted">
@@ -37,20 +38,35 @@ const Step3 = () => {
           </div>
           <input
             className="form-control form-control-lg mt-n1"
-            type="text"
-            // S
-            aria-label=".form-control-lg example"
+            type="password"
+            name="password"
+            onChange={onFormChange}
+            value={info.password}
             style={{ borderColor: "gold" }}
           />
-          <small className="text-muted">What country do you represent!</small>
+          <small className="text-muted">
+            Make sure it's secure and memorable!
+          </small>
+          <div className="mb-3 mt-3 d-flex justify-content-center">
+            <h5> Confirm Password</h5>
+          </div>
+          <input
+            className="form-control form-control-lg mt-n1"
+            type="password"
+            name="confirmPassword"
+            onChange={onFormChange}
+            value={info.confirmPassword}
+            style={{ borderColor: "gold" }}
+          />
           <div className="mb-3 mt-3 d-flex justify-content-center">
             <h5>Mobile</h5>
           </div>
           <input
             className="form-control form-control-lg mt-n1"
             type="text"
-            // S
-            aria-label=".form-control-lg example"
+            name="mobile"
+            onChange={onFormChange}
+            value={info.mobile}
             style={{ borderColor: "gold" }}
           />
           <small className="text-muted">
