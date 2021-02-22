@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Credentials = ({ onSubmit, onChange }) => {
   return (
@@ -45,12 +46,13 @@ const Credentials = ({ onSubmit, onChange }) => {
       <div className="d-flex justify-content-center ">
         <p className>or</p>
       </div>
-      <button
+      <Link
+        to="/createkitchen"
         className="btn btn-light mt-n2"
         style={{ backgroundColor: "gold", color: "white" }}
       >
         CREATE A KITCHEN!
-      </button>
+      </Link>
     </div>
   );
 };

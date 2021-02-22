@@ -4,7 +4,7 @@ import Credentials from "./topSection";
 const Main = ({ onSubmit, onChange }) => {
   return (
     <main>
-      <Credentials onSubmit={onsubmit} onChange={onChange} />
+      <Credentials onSubmit={onSubmit} onChange={onChange} />
       <div className="border-top mt-4">
         <p>
           So you want to become a seller? Create your kitchen now and turn your

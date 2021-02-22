@@ -21,6 +21,7 @@ import http from "./server/httpConfig";
 import SellersApi from "./server/sellersAPI";
 import AppMyAccount from "./routes/myaccount/app";
 import MobileNav from "./mobileNav";
+import CreateKitchen from "./routes/sellers/createKitchen";
 
 class App extends Component {
   state = {
@@ -213,6 +214,10 @@ class App extends Component {
               )}
             />
             <Route path="/user/createAccount" component={CreateAccount} />
+            <Route
+              path="/createkitchen"
+              render={(props) => <CreateKitchen />}
+            />
             <Route path="/login" component={Login} />
             <Route component={Login} path="/not-found" />
             <Route path="/logout" component={Logout} />
