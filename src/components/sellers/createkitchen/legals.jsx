@@ -6,16 +6,6 @@ import Button from "react-bootstrap/Button";
 const Legals = (props) => {
   return (
     <main>
-      {/* <div className="progress mt-3">
-        <div
-          className="progress-bar progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          style={{ width: "90%", backgroundColor: "gold" }}
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        />
-      </div> */}
       <div
         className="mb-3 mt-4 d-flex align-items-center "
         style={{ height: "73vh" }}

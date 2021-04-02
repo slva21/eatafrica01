@@ -5,16 +5,6 @@ import OriginFilter from "../../kitchenDash/originFilter";
 const Step2 = (props) => {
   return (
     <Fragment>
-      <div className="progress mt-3">
-        <div
-          className="progress-bar progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          style={{ width: "25%", backgroundColor: "gold" }}
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        />
-      </div>
       <main
         className="mb-3 mt-3 d-flex align-items-center "
         style={{ height: "73vh" }}

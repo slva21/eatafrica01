@@ -51,6 +51,10 @@ class CreateKitchen extends Component {
     this.setState({ info });
   };
 
+  handlesCurrentPecentage = (num, in_min, in_max, out_min, out_max) => {
+    return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
+  };
+
   render() {
     return (
       <main className="mb-4">
@@ -60,10 +64,17 @@ class CreateKitchen extends Component {
           origins={this.state.origins}
           info={this.state.info}
           onOriginChange={this.handleOriginChange}
+          onCurrentPercentage={this.handlesCurrentPecentage}
         />
         <div
           className="d-flex justify-content-between"
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            backgroundColor: "white",
+            position: "fixed",
+            bottom: 70,
+            paddingBottom: 20,
+          }}
         >
           {this.state.currentStep != 1 && (
             <button
@@ -86,6 +97,7 @@ class CreateKitchen extends Component {
             className="btn"
             style={{
               //   margin: "75%",
+              marginRight: 40,
               backgroundColor: "white",
             }}
             onClick={this.handleIncrementStep}

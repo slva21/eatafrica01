@@ -4,16 +4,6 @@ import { Fragment } from "react";
 const Step1 = ({ onFormChange, info }) => {
   return (
     <Fragment>
-      <div className="progress mt-3">
-        <div
-          className="progress-bar progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          style={{ width: "2%", backgroundColor: "gold" }}
-          aria-valuenow="25"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        />
-      </div>
       <main
         className="mb-4 mt-3 d-flex align-items-center "
         style={{ height: "73vh" }}
