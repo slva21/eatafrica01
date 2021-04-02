@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Fragment } from "react";
 import Main from "../../components/sellers/createkitchen/main";
 import { getOrigins } from "../../fakeOrigins";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowCircleLeft,
-  faArrowCircleRight,
-} from "@fortawesome/free-solid-svg-icons";
 
 class CreateKitchen extends Component {
   state = {
@@ -65,51 +60,9 @@ class CreateKitchen extends Component {
           info={this.state.info}
           onOriginChange={this.handleOriginChange}
           onCurrentPercentage={this.handlesCurrentPecentage}
+          onDecrementStep={this.handleDecrementStep}
+          onIncrementStep={this.handleIncrementStep}
         />
-        <div
-          className="d-flex justify-content-between"
-          style={{
-            width: "100%",
-            backgroundColor: "white",
-            position: "fixed",
-            bottom: 70,
-            paddingBottom: 20,
-          }}
-        >
-          {this.state.currentStep != 1 && (
-            <button
-              className="btn"
-              style={{
-                //   marginLeft: "75%",
-                backgroundColor: "white",
-              }}
-              onClick={this.handleDecrementStep}
-            >
-              <FontAwesomeIcon
-                className="ml-2"
-                icon={faArrowCircleLeft}
-                size="3x"
-                color="gold"
-              />
-            </button>
-          )}
-          <button
-            className="btn"
-            style={{
-              //   margin: "75%",
-              marginRight: 40,
-              backgroundColor: "white",
-            }}
-            onClick={this.handleIncrementStep}
-          >
-            <FontAwesomeIcon
-              className="ml-2"
-              icon={faArrowCircleRight}
-              size="3x"
-              color="gold"
-            />
-          </button>
-        </div>
       </main>
     );
   }
