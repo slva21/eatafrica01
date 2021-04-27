@@ -25,19 +25,24 @@ class Login extends Component {
         this.state.user.email,
         this.state.user.password
       );
+
       if (token) {
         localStorage.setItem("token", token);
         localStorage.setItem("prevLocation", this.props.location.pathname);
+
+        if (!this.props.history.location.state) {
+          window.location = "/kitchens";
+          return;
+        }
 
         if (this.props.history.location.state.from == "/cart") {
           console.log("here");
           window.location = "/cart";
           return;
-        } else if (this.props.history.location.state.from == "productArchive") {
+        }
+        if (this.props.history.location.state.from == "productArchive") {
           window.location = this.props.history.location.state.url;
           return;
-        } else {
-          window.location = "/kitchens";
         }
       }
     } catch (ex) {}
