@@ -164,7 +164,7 @@ class Cart extends Component {
   };
 
   render() {
-    if (this.state.cart.total === 0)
+    if (this.state.cart.total < 0.1)
       return (
         <div className="align-items-center min-vh-100 d-flex justify-content-center">
           <p1>Cart Empty</p1>
