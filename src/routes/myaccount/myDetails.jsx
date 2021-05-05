@@ -1,15 +1,19 @@
 import React, { Component } from "react";
+import Main from "../../components/myAccount/myDetails/main";
 
 class MyDetails extends Component {
   state = {};
+
+  handleLogoutUser = () => {
+    this.props.history.push("/logout");
+  };
   render() {
     return (
-      <button
-        className="btn btn-warning"
-        onClick={() => this.props.history.push("/logout")}
-      >
-        Logout
-      </button>
+      <Main
+        onLogoutUser={this.handleLogoutUser}
+        {...this.props.userInfo}
+        onUserInfoChange={this.props.onUserInfoChange}
+      />
     );
   }
 }

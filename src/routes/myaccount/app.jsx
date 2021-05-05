@@ -13,6 +13,11 @@ class App extends Component {
     isAdmin: "",
     orders: [],
     currentOrder: "",
+    userInfo: {
+      name: "",
+      phone: "",
+      addresses: [],
+    },
   };
 
   async componentDidMount() {
@@ -21,7 +26,11 @@ class App extends Component {
       const orders = await OrdersApi.getUserOrders(this.props.user._id);
 
       console.log(this.props);
-      this.setState({ isAdmin: this.props.user.isAdmin, orders });
+      this.setState({
+        isAdmin: this.props.user.isAdmin,
+        orders,
+        userInfo: this.props.user,
+      });
     } catch (error) {}
   }
 
@@ -39,6 +48,12 @@ class App extends Component {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+  handleChangeUserInfo = (e) => {
+    let userInfo = { ...this.state.userInfo };
+    userInfo[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ userInfo });
   };
 
   render() {
@@ -124,8 +139,9 @@ class App extends Component {
               render={(props) => (
                 <MyDetails
                   {...props}
+                  userInfo={this.state.userInfo}
                   orders={this.state.orders}
-                  onReOrder={this.handleReOrder}
+                  onUserInfoChange={this.handleChangeUserInfo}
                 />
               )}
             />
