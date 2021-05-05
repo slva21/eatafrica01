@@ -7,6 +7,8 @@ import OrdersApi from "../../server/orders";
 import cartApi from "../../server/cartApi";
 import MyOrdersArchive from "./myOrdersArchive";
 import MyDetails from "./myDetails";
+import UserApi from "../../server/usersAPi";
+import { toast } from "react-toastify";
 
 class App extends Component {
   state = {
@@ -54,6 +56,21 @@ class App extends Component {
     let userInfo = { ...this.state.userInfo };
     userInfo[e.currentTarget.name] = e.currentTarget.value;
     this.setState({ userInfo });
+  };
+
+  handleSaveUser = async () => {
+    const res = await UserApi.editUser({
+      userId: this.state.userInfo._id,
+      name: this.state.userInfo.name,
+      phone: this.state.userInfo.phone,
+    });
+
+    if (res == "Saved") {
+      toast.success("Got it! Re-login to see changes", {
+        position: "top-center",
+        autoClose: 2500,
+      });
+    }
   };
 
   render() {
@@ -127,11 +144,7 @@ class App extends Component {
             <Route
               path="/myaccount/orders"
               render={(props) => (
-                <MyOrders
-                  {...props}
-                  orders={this.state.orders}
-                  onReOrder={this.handleReOrder}
-                />
+                <MyOrders {...props} orders={this.state.orders} />
               )}
             />
             <Route
@@ -142,6 +155,7 @@ class App extends Component {
                   userInfo={this.state.userInfo}
                   orders={this.state.orders}
                   onUserInfoChange={this.handleChangeUserInfo}
+                  onSaveUser={this.handleSaveUser}
                 />
               )}
             />

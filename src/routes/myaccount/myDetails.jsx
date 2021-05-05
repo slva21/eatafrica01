@@ -13,6 +13,7 @@ class MyDetails extends Component {
         onLogoutUser={this.handleLogoutUser}
         {...this.props.userInfo}
         onUserInfoChange={this.props.onUserInfoChange}
+        onSaveUser={this.props.onSaveUser}
       />
     );
   }

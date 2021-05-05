@@ -2,7 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-const Main = ({ phone, name, addresses, onLogoutUser, onUserInfoChange }) => {
+const Main = ({
+  phone,
+  name,
+  addresses,
+  onLogoutUser,
+  onUserInfoChange,
+  onSaveUser,
+}) => {
   return (
     <main style={{ maxWidth: "100%" }}>
       <div class="mb-3 mt-3">
@@ -41,7 +48,19 @@ const Main = ({ phone, name, addresses, onLogoutUser, onUserInfoChange }) => {
         </ul>
       </div>
 
-      <button className="btn btn-warning mt-4" onClick={onLogoutUser}>
+      <button
+        className="btn btn-dark mt-4 d-block"
+        style={{ width: "100%" }}
+        onClick={onSaveUser}
+      >
+        Save
+      </button>
+
+      <button
+        className="btn btn-warning mt-2"
+        onClick={onLogoutUser}
+        style={{ width: "100%", color: "white" }}
+      >
         Logout
       </button>
     </main>
