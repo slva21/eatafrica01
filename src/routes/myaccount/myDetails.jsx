@@ -14,6 +14,7 @@ class MyDetails extends Component {
         {...this.props.userInfo}
         onUserInfoChange={this.props.onUserInfoChange}
         onSaveUser={this.props.onSaveUser}
+        onPushToAddresses={this.props.onPushToAddresses}
       />
     );
   }

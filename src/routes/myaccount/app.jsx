@@ -9,6 +9,7 @@ import MyOrdersArchive from "./myOrdersArchive";
 import MyDetails from "./myDetails";
 import UserApi from "../../server/usersAPi";
 import { toast } from "react-toastify";
+import MyAddresses from "./myAddresses";
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
     userInfo: {
       name: "",
       phone: "",
-      addresses: [],
+      address: [],
     },
   };
 
@@ -27,7 +28,6 @@ class App extends Component {
       localStorage.setItem("url", "/myaccount");
       const orders = await OrdersApi.getUserOrders(this.props.user._id);
 
-      console.log(this.props);
       this.setState({
         isAdmin: this.props.user.isAdmin,
         orders,
@@ -50,6 +50,10 @@ class App extends Component {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+  handlePushToAddresses = async () => {
+    this.props.history.push("/myaccount/details/address");
   };
 
   handleChangeUserInfo = (e) => {
@@ -148,6 +152,13 @@ class App extends Component {
               )}
             />
             <Route
+              path="/myaccount/details/address"
+              render={(props) => (
+                <MyAddresses {...props} userInfo={this.state.userInfo} />
+              )}
+            />
+
+            <Route
               path="/myaccount/details"
               render={(props) => (
                 <MyDetails
@@ -156,6 +167,7 @@ class App extends Component {
                   orders={this.state.orders}
                   onUserInfoChange={this.handleChangeUserInfo}
                   onSaveUser={this.handleSaveUser}
+                  onPushToAddresses={this.handlePushToAddresses}
                 />
               )}
             />
