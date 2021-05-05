@@ -50,19 +50,23 @@ const Main = ({
               class="list-group-item d-flex justify-content-between "
               onClick={onPushToAddresses}
             >
-              <p class="card-text">My Addresses</p>
+              <p class="card-text" style={{ fontFamily: "poppins" }}>
+                My Places
+              </p>
               <FontAwesomeIcon icon={faArrowRight} color="gold" />
             </li>
             <li class="list-group-item d-flex justify-content-between ">
-              <p class="card-text">Promotions</p>
+              <p class="card-text" style={{ fontFamily: "poppins" }}>
+                Promotions
+              </p>
               <FontAwesomeIcon icon={faArrowRight} color="gold" />
             </li>
           </ul>
         </div>
 
         <button
-          className="btn btn-dark mt-4 d-block"
-          style={{ width: "100%" }}
+          className="btn btn-light mt-4 d-block"
+          style={{ width: "100%", fontFamily: "poppins" }}
           onClick={onSaveUser}
         >
           Save
@@ -71,7 +75,7 @@ const Main = ({
         <button
           className="btn btn-warning mt-2"
           onClick={onLogoutUser}
-          style={{ width: "100%", color: "white" }}
+          style={{ width: "100%", color: "white", fontFamily: "poppins" }}
         >
           Logout
         </button>
