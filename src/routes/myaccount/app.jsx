@@ -10,6 +10,7 @@ import MyDetails from "./myDetails";
 import UserApi from "../../server/usersAPi";
 import { toast } from "react-toastify";
 import MyAddresses from "./myAddresses";
+import { getCities } from "../../fakeCities";
 
 class App extends Component {
   state = {
@@ -20,6 +21,13 @@ class App extends Component {
       name: "",
       phone: "",
       address: [],
+    },
+    cities: getCities(),
+    newAddress: {
+      addressLine1: "",
+      addressLine2: "",
+      postcode: "",
+      cityID: "",
     },
   };
 
@@ -60,6 +68,12 @@ class App extends Component {
     let userInfo = { ...this.state.userInfo };
     userInfo[e.currentTarget.name] = e.currentTarget.value;
     this.setState({ userInfo });
+  };
+
+  handleNewAddressChange = (e) => {
+    let newAddress = { ...this.state.newAddress };
+    newAddress[e.currentTarget.name] = e.currentTarget.value;
+    this.setState({ newAddress });
   };
 
   handleSaveUser = async () => {
@@ -154,7 +168,12 @@ class App extends Component {
             <Route
               path="/myaccount/details/address"
               render={(props) => (
-                <MyAddresses {...props} userInfo={this.state.userInfo} />
+                <MyAddresses
+                  {...props}
+                  userInfo={this.state.userInfo}
+                  cities={this.state.cities}
+                  onNewAddressChange={this.handleNewAddressChange}
+                />
               )}
             />
 
