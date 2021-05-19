@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSpring, animated } from "react-spring";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import ShowAddress from "../../components/myAccount/myDetails/myAddress/showAddress";
+import AddressList from "../../components/myAccount/myDetails/myAddress/addressList";
+
 
 const MyAddresses = ({ userInfo }) => {
   const propss = useSpring({
@@ -11,39 +10,13 @@ const MyAddresses = ({ userInfo }) => {
     from: { marginLeft: 500, opacity: 1 },
   });
 
-  const [currentAddress, setCurrentAddress] = useState(0);
+  
 
   return (
-    <animated.div style={propss}>
+    <animated.div style={propss}> 
       <main>
-        <div class="card mt-3" style={{ maxWidth: "100%" }}>
-          <ul class="list-group list-group-flush">
-            {userInfo.address.map((m) => (
-              <li
-                class="list-group-item"
-                style={{ fontFamily: "poppins" }}
-                key={m._id}
-              >
-                <div className="d-flex justify-content-between">
-                  <p onClick={() => setCurrentAddress(m._id)}>
-                    {m.addressLine1}, {m.postcode}
-                  </p>
-                  {currentAddress == m._id && (
-                    <FontAwesomeIcon
-                      icon={faArrowUp}
-                      color="gold"
-                      size="lg"
-                      onClick={() => setCurrentAddress("")}
-                    />
-                  )}
-                  <FontAwesomeIcon icon={faTrashAlt} color="red" size="lg" />
-                </div>
-
-                {currentAddress == m._id && <ShowAddress m={m} />}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <AddressList userInfo = {userInfo}/>
+        {/* List of current user addresses */}
         <button className="btn btn-dark mt-2" style={{ width: "100%" }}>
           Add Place
         </button>
