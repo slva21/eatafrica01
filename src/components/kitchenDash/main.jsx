@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 import RenderKitchens from "./renderKitchens";
-import CityFilter from "./cityFilter";
+import CityFilter from "./deliveryFilter";
 import Navbar from "react-bootstrap/Navbar";
 import OriginFilter from "./originFilter";
 import { Link } from "react-router-dom";
 import CurrentAddress from "./currentAddress";
+import DeliveryFilter from "./deliveryFilter";
 
 class Main extends Component {
   render() {
     const {
-      cities,
-      onSelectCity,
+      onSelectType,
       origins,
       onFilterOrigin,
       filtered,
@@ -22,13 +22,13 @@ class Main extends Component {
       <div style={{ marginBottom: 70 }}>
         <Navbar bg="white" sticky="top">
           <div className="d-flex  justify-content-center">
-            <CityFilter cities={cities} onSelectCity={onSelectCity} />
-            {/* <OriginFilter origins={origins} onFilterOrigin={onFilterOrigin} /> */}
             <CurrentAddress
               addresses={addresses}
               onChange={onCurrentAddressChange}
             />
+            <OriginFilter origins={origins} onFilterOrigin={onFilterOrigin} />
           </div>
+          <DeliveryFilter onSelectType={onSelectType} />
         </Navbar>
 
         <div className="d-flex justify-content-center">

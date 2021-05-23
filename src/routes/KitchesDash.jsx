@@ -14,6 +14,7 @@ class KitchenDash extends Component {
     cities: getCities(),
     selectedOrigin: "select",
     selectedCity: "All",
+    selectedDeliveryType: "All",
     location: {
       postcode: "",
       state: "",
@@ -62,7 +63,11 @@ class KitchenDash extends Component {
         addressIndex
       );
 
-      this.setState({ kitchens });
+      this.setState({
+        kitchens,
+        selectedDeliveryType: "All",
+        selectedOrigin: "select",
+      });
     } catch (err) {
       console.log(err.message);
     }
@@ -76,26 +81,32 @@ class KitchenDash extends Component {
         ({ _id }) => _id == selectedAddressID
       );
 
+      if (selectedAddressIndex == -1) return; //no address selected
+
       await this.handleSelectAddress(selectedAddressIndex);
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  handleSelectDeliveryType = (type) => {
+    this.setState({ selectedDeliveryType: type });
+  };
+
   handleSelectCity = (city) => {
     this.setState({ selectedCity: city });
   };
 
-  handleFilterOrigin = (e) => {
-    let selectedOrigin = e.currentTarget.value;
+  handleFilterOrigin = (selectedOrigin) => {
     this.setState({ selectedOrigin });
   };
 
   render() {
     let filtered =
-      this.state.selectedCity !== "All"
+      this.state.selectedDeliveryType !== "All"
         ? this.state.kitchens.filter(
-            (m) => m.sellerInfo.city.name === this.state.selectedCity
+            (m) =>
+              m.sellerInfo.offersDelivery === this.state.selectedDeliveryType
           )
         : this.state.kitchens;
 
@@ -115,6 +126,7 @@ class KitchenDash extends Component {
         origins={this.state.origins}
         onFilterOrigin={this.handleFilterOrigin}
         filtered={filtered}
+        onSelectType={this.handleSelectDeliveryType}
       />
     );
   }

@@ -24,6 +24,9 @@ const getSellers = async () => {
         },
         description: m.description,
         ratingAverage: m.ratingAverage,
+        offersDelivery
+: m.offersDelivery
+,
       },
       menu: m.menu.map((m) => ({
         foodPicUrl: config.apiEndpoint + `/menus/foodPic/${m._id}`,
@@ -63,6 +66,8 @@ const getSeller = async (id) => {
         description: res.description,
         ratingAverage: res.ratingAverage,
         storeNotes: res.storeNotes,
+        offersDelivery: res.offersDelivery
+        ,
       },
       menu: res.menu.map((m) => ({
         foodPicUrl: config.apiEndpoint + `/menus/foodPic/${m._id}`,
@@ -102,7 +107,9 @@ const getNearSellers = async(userId, addressIndex) => {
         },
         description: m.description,
         ratingAverage: m.ratingAverage,
+        offersDelivery: m.offersDelivery,
       },
+      
       menu: m.menu.map((m) => ({
         foodPicUrl: config.apiEndpoint + `/menus/foodPic/${m._id}`,
         ...m,
