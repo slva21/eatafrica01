@@ -16,6 +16,25 @@ const editUser = async (UserInfo) => {
   }
 };
 
+
+const addAddress = async ({postcode,addressLine1, addressLine2, cityId,userId}) => {
+  try {
+    const { data: res } = await http.patch(`${config.apiEndpoint}/users/address`, {
+      userId,
+      postcode,
+      addressLine1,
+      addressLine2,
+      cityId
+    });
+
+    return res;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+
 export default {
   editUser,
+  addAddress
 };

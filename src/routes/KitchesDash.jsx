@@ -8,8 +8,8 @@ import { toast } from "react-toastify";
 
 class KitchenDash extends Component {
   state = {
+    selectedAddressIndex: "",
     kitchens: [],
-
     origins: getOrigins(),
     cities: getCities(),
     selectedOrigin: "select",
@@ -55,6 +55,33 @@ class KitchenDash extends Component {
     } catch (error) {}
   }
 
+  handleSelectAddress = async (addressIndex: Number) => {
+    try {
+      const kitchens = await Api.getNearSellers(
+        this.props.user._id,
+        addressIndex
+      );
+
+      this.setState({ kitchens });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  handleCurrentAddressChange = async (e) => {
+    try {
+      const selectedAddressID = e.currentTarget.value;
+
+      let selectedAddressIndex = this.props.user.address.findIndex(
+        ({ _id }) => _id == selectedAddressID
+      );
+
+      await this.handleSelectAddress(selectedAddressIndex);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   handleSelectCity = (city) => {
     this.setState({ selectedCity: city });
   };
@@ -80,7 +107,10 @@ class KitchenDash extends Component {
 
     return (
       <Main
+        onSelectAddress={this.handleSelectAddress}
+        addresses={this.props.user.address}
         cities={this.state.cities}
+        onCurrentAddressChange={this.handleCurrentAddressChange}
         onSelectCity={this.handleSelectCity}
         origins={this.state.origins}
         onFilterOrigin={this.handleFilterOrigin}

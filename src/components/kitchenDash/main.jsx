@@ -4,6 +4,7 @@ import CityFilter from "./cityFilter";
 import Navbar from "react-bootstrap/Navbar";
 import OriginFilter from "./originFilter";
 import { Link } from "react-router-dom";
+import CurrentAddress from "./currentAddress";
 
 class Main extends Component {
   render() {
@@ -13,6 +14,8 @@ class Main extends Component {
       origins,
       onFilterOrigin,
       filtered,
+      addresses,
+      onCurrentAddressChange,
     } = this.props;
 
     return (
@@ -20,7 +23,11 @@ class Main extends Component {
         <Navbar bg="white" sticky="top">
           <div className="d-flex  justify-content-center">
             <CityFilter cities={cities} onSelectCity={onSelectCity} />
-            <OriginFilter origins={origins} onFilterOrigin={onFilterOrigin} />
+            {/* <OriginFilter origins={origins} onFilterOrigin={onFilterOrigin} /> */}
+            <CurrentAddress
+              addresses={addresses}
+              onChange={onCurrentAddressChange}
+            />
           </div>
         </Navbar>
 

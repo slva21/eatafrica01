@@ -1,7 +1,7 @@
 import React from "react";
 import FormControl from "../../../reusable/formControl";
 
-const AddAddress = ({ cities, onNewAddressChange }) => {
+const AddAddress = ({ cities, onNewAddressChange, onSaveUserAddress }) => {
   return (
     <main
       className="
@@ -72,6 +72,7 @@ const AddAddress = ({ cities, onNewAddressChange }) => {
       <button
         className="btn btn-success mt-2 mb-2 ml-1 mr-2"
         style={{ width: "98%", fontFamily: "poppins" }}
+        onClick={onSaveUserAddress}
       >
         Save
       </button>

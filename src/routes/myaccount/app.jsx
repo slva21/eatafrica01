@@ -76,6 +76,22 @@ class App extends Component {
     this.setState({ newAddress });
   };
 
+  handleSaveUserAddress = async () => {
+    try {
+      const res = await UserApi.addAddress({
+        postcode: this.state.newAddress.postcode,
+        addressLine1: this.state.newAddress.addressLine1,
+        addressLine2: this.state.newAddress.addressLine2,
+        cityId: this.state.newAddress.cityID,
+        userId: this.state.userInfo._id,
+      });
+
+      let userInfo = { ...this.state.userInfo };
+      userInfo.address.push(res);
+      this.setState({ userInfo });
+    } catch (err) {}
+  };
+
   handleSaveUser = async () => {
     const res = await UserApi.editUser({
       userId: this.state.userInfo._id,
@@ -173,6 +189,7 @@ class App extends Component {
                   userInfo={this.state.userInfo}
                   cities={this.state.cities}
                   onNewAddressChange={this.handleNewAddressChange}
+                  onSaveUserAddress={this.handleSaveUserAddress}
                 />
               )}
             />

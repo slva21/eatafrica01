@@ -3,7 +3,12 @@ import { useSpring, animated } from "react-spring";
 import AddressList from "../../components/myAccount/myDetails/myAddress/addressList";
 import AddAddress from "../../components/myAccount/myDetails/myAddress/newAddress";
 
-const MyAddresses = ({ userInfo, onNewAddressChange, cities }) => {
+const MyAddresses = ({
+  userInfo,
+  onNewAddressChange,
+  cities,
+  onSaveUserAddress,
+}) => {
   const propss = useSpring({
     config: { mass: 1, tension: 150, friction: 14, clamp: false },
     to: { marginLeft: 0, opacity: 1 },
@@ -26,7 +31,11 @@ const MyAddresses = ({ userInfo, onNewAddressChange, cities }) => {
         </button>
 
         {AddPlaceBtn && (
-          <AddAddress onNewAddressChange={onNewAddressChange} cities={cities} />
+          <AddAddress
+            onNewAddressChange={onNewAddressChange}
+            cities={cities}
+            onSaveUserAddress={onSaveUserAddress}
+          />
         )}
       </main>
     </animated.div>

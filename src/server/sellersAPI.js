@@ -30,7 +30,7 @@ const getSellers = async () => {
         ...m,
       })),
     }));
-    console.log(kitchens);
+    //console.log(kitchens);
     return kitchens;
   } catch (ex) {
     // if (ex.response.status === 404) {
@@ -78,6 +78,44 @@ const getSeller = async (id) => {
     // }
   }
 };
+
+const getNearSellers = async(userId, addressIndex) => {
+  try {
+    const {data: res} = await http.get(`${config.apiEndpoint}/sellers/nearSellers/${userId}/${addressIndex}`);
+
+    let kitchens = res.map((m) => ({
+      sellerInfo: {
+        _id: m._id,
+        name: m.name,
+        storeName: m.storeName,
+        banner: config.apiEndpoint + `/sellers/banner/${m._id}`,
+        city: {
+          name: m.city.name,
+          _id: m.city._id,
+        },
+        contact: m.contact,
+        stars: m.stars,
+        origin: {
+          name: m.origin.name,
+          _id: m.origin._id,
+          path: m.origin.path,
+        },
+        description: m.description,
+        ratingAverage: m.ratingAverage,
+      },
+      menu: m.menu.map((m) => ({
+        foodPicUrl: config.apiEndpoint + `/menus/foodPic/${m._id}`,
+        ...m,
+      })),
+    }));
+
+    return kitchens;
+
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
 
 const deleteNote = async (sellerId, noteId) => {
   try {
@@ -172,4 +210,5 @@ export default {
   deleteNote,
   addNote,
   editBanner,
+  getNearSellers
 };
