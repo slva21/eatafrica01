@@ -77,11 +77,16 @@ class KitchenDash extends Component {
     try {
       const selectedAddressID = e.currentTarget.value;
 
+      if (selectedAddressID == "Add") {
+        this.props.history.push("/myaccount/details/address");
+        return;
+      }
+
       let selectedAddressIndex = this.props.user.address.findIndex(
         ({ _id }) => _id == selectedAddressID
       );
 
-      if (selectedAddressIndex == -1) return; //no address selected
+      if (selectedAddressIndex == -1) window.location = "/kitchens"; //no address selected
 
       await this.handleSelectAddress(selectedAddressIndex);
     } catch (error) {

@@ -50,7 +50,6 @@ class ProductArchive extends Component {
         userId,
         this.props.match.params.productId
       );
-      console.log(res);
 
       const total = res.cart.total;
 
@@ -158,7 +157,6 @@ class ProductArchive extends Component {
       menu__v: this.state.currentProduct.__v,
       userId: this.state.userId,
     });
-
     this.props.onCartChange(cart);
     this.isMenuInCart();
     this.setState({ total: cart.total });

@@ -50,7 +50,7 @@ class App extends Component {
       order.kitchen = order.kitchen._id;
       order.note = order.deliveryNote;
       order.items.forEach(({ menu }) => {
-        menu._id = menu._id._id;
+        menu.__v = menu._id;
       });
 
       await cartApi.setCart(userId, order);

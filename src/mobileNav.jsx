@@ -39,7 +39,7 @@ class MobileNav extends Component {
         fixed="bottom"
         className="pb-3  pl-4 pr-4"
       >
-        {this.props.seller && !this.props.user && (
+        {this.props.seller && !this.props.user._id && (
           <NavLink
             to="/logout"
             className="navbar-brand mt-n2"
@@ -118,9 +118,9 @@ class MobileNav extends Component {
           </React.Fragment>
         )}
 
-        {this.props.user && (
+        {this.props.user._id && (
           <NavLink
-            to="/myaccount"
+            to="/myaccount/details"
             className="navbar-brand mt-n2"
             style={{ textDecoration: "none", color: "grey" }}
             activeStyle={{
@@ -138,7 +138,7 @@ class MobileNav extends Component {
             </small>
           </NavLink>
         )}
-        {!this.props.user && !this.props.seller && (
+        {!this.props.user._id && !this.props.seller && (
           <React.Fragment>
             <NavLink
               to="/login"

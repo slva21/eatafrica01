@@ -20,7 +20,7 @@ class Cart extends Component {
       items: [],
       deliveryNote: "",
       tip: "",
-      total: "",
+      total: 1,
     },
     itemTotals: [],
     isDelivery: "",
@@ -110,6 +110,7 @@ class Cart extends Component {
           price: m._id.price,
           populatedOptions: m.populatedOptions,
           quantity: m.quantity,
+          __v: m.__v,
         },
       }));
 
@@ -142,7 +143,6 @@ class Cart extends Component {
       populatedOptions: m.populatedOptions,
       quantity: m.quantity,
     }));
-    console.log(items);
   };
 
   handleTipChange = async (amount) => {
@@ -164,12 +164,13 @@ class Cart extends Component {
   };
 
   render() {
-    if (this.state.cart.total < 0.1)
+    if (this.state.cart.total < 0.1) {
       return (
         <div className="align-items-center min-vh-100 d-flex justify-content-center">
           <p1>Cart Empty</p1>
         </div>
       );
+    }
 
     return (
       <Main

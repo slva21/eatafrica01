@@ -14,6 +14,9 @@ const CurrentAddress = ({ addresses, onChange }) => {
           <option value={address._id}>{address.addressLine1}</option>
         </React.Fragment>
       ))}
+      <option value="Add" className="text-bold">
+        Add New
+      </option>
     </select>
   );
 };

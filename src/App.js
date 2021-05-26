@@ -25,7 +25,9 @@ import CreateKitchen from "./routes/sellers/createKitchen";
 
 class App extends Component {
   state = {
-    user: "",
+    user: {
+      address:[],
+    },
     cart: {},
     quantity: "1",
     seller: "",
@@ -47,9 +49,10 @@ class App extends Component {
       const user = decoded.userInfo;
       const cart = decoded.cart;
       const seller = decoded.seller;
-
+      if(user){
+        this.setState({user})
+      }
       this.setState({
-        user,
         cart,
         seller,
       });
