@@ -6,6 +6,7 @@ import PercentageBar from "./percentageBar";
 import Step1 from "./step1";
 import Step2 from "./step2";
 import Step3 from "./step3";
+
 const Main = (props) => {
   const propss = useSpring({
     config: { mass: 1, tension: 130, friction: 14, clamp: false },

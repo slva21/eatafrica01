@@ -1,6 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import OriginFilter from "../../kitchenDash/originFilter";
+import SelectOrigin from "./selectOrigin";
 
 const Step2 = (props) => {
   return (
@@ -14,9 +15,9 @@ const Step2 = (props) => {
             <h5 className="mt-3">ORIGIN</h5>
           </div>
           <div className="mr-3">
-            <OriginFilter
+            <SelectOrigin
+              onOriginChange={props.onOriginChange}
               origins={props.origins}
-              onFilterOrigin={props.onOriginChange}
             />
             <small className="text-muted">What country do you represent!</small>
           </div>
